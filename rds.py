@@ -10,4 +10,4 @@ for i in response['DBInstances']:
     db_type = i['DBInstanceClass']
     db_storage = i['AllocatedStorage']
     db_engine = i['Engine']
-    print db_instance_name,db_type,db_storage,db_engine
+    print("{0}, {1}, {2}".formnat(db_instance_name,db_type,db_storage,db_engine))
