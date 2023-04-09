@@ -10,7 +10,7 @@ response = client.describe_db_instances()
 
 for i in response['DBInstances']:
     pprint.pprint(i)
-    db_name = i['DBName']
+    # db_name = i['DBName']
     db_instance_name = i['DBInstanceIdentifier']
     db_type = i['DBInstanceClass']
     db_storage = i['AllocatedStorage']
