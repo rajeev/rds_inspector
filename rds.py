@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 import boto3
 import pprint
@@ -11,22 +11,32 @@ response = client.describe_db_instances()
 rds_offer = awspricing.offer('AmazonRDS')
 
 sku = rds_offer.search_skus(
-  instance_type='db.m4.large',
-  location='US East (N. Virginia)',
-  database_engine='MySQL',
-  license_model='No license required',
-  deployment_option='Multi-AZ'
+    instance_type='db.m4.large',
+    location='US East (N. Virginia)',
+    database_engine='MySQL',
+    license_model='No license required',
+    deployment_option='Multi-AZ'
 ) # {'QPZNR6MYN432XTPU'}
 
-oh = rds_offer.ondemand_hourly(
-  'db.m4.large',
-  'MySQL',
-  license_model='No license required',
-  deployment_option='Multi-AZ',
-  region='us-east-1'
+oh1 = rds_offer.ondemand_hourly(
+    'db.m4.large',
+    'MySQL',
+    license_model='No license required',
+    deployment_option='Multi-AZ',
+    region='us-east-1'
 ) # 0.35
 
-print("{0}, {1}".format(sku, oh))
+oh2 = rds_offer.ondemand_monthly(
+    'db.t3.xlarge',
+    'MySQL',
+    license_model='No license required',
+    deployment_option='Multi-AZ',
+    region='us-east-1'
+)
+
+print("{0}, {1}".format(oh1, oh2))
+
+
 
 # for i in response['DBInstances']:
 #     pprint.pprint(i)
