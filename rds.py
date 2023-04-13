@@ -7,8 +7,9 @@ import awspricing
 client = boto3.client('rds')
 response = client.describe_db_instances()
 
-
+print("pulling rates")
 rds_offer = awspricing.offer('AmazonRDS')
+print("got rates")
 
 sku = rds_offer.search_skus(
     instance_type='db.m4.large',
