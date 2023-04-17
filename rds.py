@@ -1,8 +1,21 @@
 #!/usr/bin/env python3
-
+import os
 import boto3
 import pprint
 import awspricing
+
+
+
+# AWSPRICING_USE_CACHE: Whether to use a simple file-based cache. Valid values are 0|1. Defaults to 0 (false).
+#
+# AWSPRICING_CACHE_PATH: Prefix to write cache files. Defaults to /tmp/awspricing.
+#
+# AWSPRICING_CACHE_MINUTES: Number of minutes to keep cache for. Defaults to 1440 (1 day).
+
+os.putenv('AWSPRICING_USE_CACHE', '1')
+os.putenv('AWSPRICING_CACHE_PATH', './price_cache/')
+os.putenv('AWSPRICING_CACHE_MINUTES', '14400')
+
 
 client = boto3.client('rds')
 response = client.describe_db_instances()
